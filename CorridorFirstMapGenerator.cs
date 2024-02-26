@@ -71,7 +71,7 @@ public class CorridorFirstMapGenerator : simpleWalkMapGenerator
         
     }
 
-    private List<Vector2Int> FindDeadEnd(HashSet<Vector2Int> floorPosition)
+    private List<Vector2Int> FindDeadEnd (HashSet<Vector2Int> floorPosition)
     {
         List<Vector2Int> deadEnd = new List<Vector2Int>();
 
@@ -90,7 +90,7 @@ public class CorridorFirstMapGenerator : simpleWalkMapGenerator
             if(neighbors==1){
                 deadEnd.Add(position);
             }
-            
+
         }
         
         return deadEnd;
