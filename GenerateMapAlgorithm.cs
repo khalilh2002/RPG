@@ -62,7 +62,7 @@ public static class GenerateMapAlgorithm
 
                         SplitHorizontally( minHeight , roomQueue , room);
 
-                    }else{
+                    }else if(room.size.x >= minWidth && room.size.y >= minHeight){
                         roomList.Add(room);
                     }
                 }
@@ -76,7 +76,7 @@ public static class GenerateMapAlgorithm
                 {
                     SplitVertically(minWidth  , roomQueue , room);
 
-                }else{
+                }else if(room.size.x >= minWidth && room.size.y >= minHeight){
                     roomList.Add(room);
                 }
             }
