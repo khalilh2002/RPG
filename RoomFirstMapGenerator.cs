@@ -9,6 +9,7 @@ using Random = UnityEngine.Random ;
 
 public class RoomFirstMapGenerator : simpleWalkMapGenerator
 {
+    //var to send to the player in wich he will be posioned
     public static BoundsInt FirstRoom ;
 
     
@@ -32,7 +33,8 @@ public class RoomFirstMapGenerator : simpleWalkMapGenerator
                                                                     ,minRoomWidth ,minRoomHeight);
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         floor = createSimpleRooms(roomlist);
-        //test
+        
+        //add the first room createdd to the var firstroom to send it to the player
 
         FirstRoom = roomlist[0];
 
@@ -132,6 +134,7 @@ public class RoomFirstMapGenerator : simpleWalkMapGenerator
         return floor;
     }
 
+    //funtion to call the run Procedural Map and clear the previeous one 
     public void runRoomFirstMapGeneratorClass(){
         tilmapVisulaizer.clear();
         RunProceduralGeneration();
