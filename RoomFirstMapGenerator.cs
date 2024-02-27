@@ -9,15 +9,16 @@ using Random = UnityEngine.Random ;
 
 public class RoomFirstMapGenerator : simpleWalkMapGenerator
 {
+    public static BoundsInt FirstRoom ;
 
     
 
     [SerializeField]
-    private int minRoomWidth = 4 , minRoomHeight = 4 ;
+    private int minRoomWidth = 10 , minRoomHeight = 10 ;
     [SerializeField]
-    private int mapWidth = 20 , mapHeight = 20;
+    private int mapWidth = 53 , mapHeight = 53;
     [SerializeField][Range(0,10)]
-    private int offset = 1 ;
+    private int offset = 3 ;
     //private bool randomWalkRooms = false ;
 
     protected override void RunProceduralGeneration()
@@ -31,6 +32,9 @@ public class RoomFirstMapGenerator : simpleWalkMapGenerator
                                                                     ,minRoomWidth ,minRoomHeight);
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         floor = createSimpleRooms(roomlist);
+        //test
+
+        FirstRoom = roomlist[0];
 
         //list of centers of rooms
         List<Vector2Int> roomCenters = new List<Vector2Int>();
@@ -42,7 +46,7 @@ public class RoomFirstMapGenerator : simpleWalkMapGenerator
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
-
+        Debug.Log("hello this is floor content " + floor);
         tilmapVisulaizer.paintFloorTiles(floor);
         WallGenerator.createWalls(floor,tilmapVisulaizer);
     }
@@ -126,5 +130,11 @@ public class RoomFirstMapGenerator : simpleWalkMapGenerator
         } 
 
         return floor;
+    }
+
+    public void runRoomFirstMapGeneratorClass(){
+        tilmapVisulaizer.clear();
+        RunProceduralGeneration();
+        Debug.Log("runfirstvoid END END");
     }
 }
